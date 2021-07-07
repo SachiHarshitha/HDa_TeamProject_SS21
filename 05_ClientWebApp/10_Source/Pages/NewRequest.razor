@@ -1,0 +1,84 @@
+﻿@using INTRANAV_Client_Application.Data;
+@using System.Threading;
+@inject User User;
+ 
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,10);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">New Access Request Form</h3>
+                <button type="button" class="close" @onclick="@ModalCancel">&times;</button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@Request">
+                    <p>Please Fill in the Request Form</p>
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="form-group">
+                        <label for="fullName">Full name : </label>
+                        <input id="fullName" class="form-control" value="@User.FullName" placeholder="Enter full name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail : </label>
+                        <input id="email" class="form-control" value="@User.Email" placeholder="Enter Email Address" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientid">Client ID : </label>
+                        <input id="clientid" class="form-control" value="@User.ClientID" placeholder="Enter Client ID" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Quantity : </label>
+                        <input id="duration" class="form-control" type="number" @bind-value="@Request.Quantity" placeholder="Enter Duration">
+                        <ValidationMessage For="@(() => Request.Quantity)" />
+                    </div>
+                    <div class="form-group">
+                        <label for="level">Level : </label>
+                        <input id="level" class="form-control" type="number" @bind-value="@Request.Level" placeholder="Enter Required Level">
+                        <ValidationMessage For="@(() => Request.Level)" />
+                    </div>
+                </EditForm>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" @onclick="@ModalCancel">Cancel</button>
+                <button type="button" class="btn btn-primary" @onclick=@ModalOk>Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public Request Request
+    {
+        get;
+        set;
+    } = new Request { };
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Request.Name = User.FullName;
+        Console.WriteLine(User.FirstName);
+        Request.Email = User.Email;
+        Request.ClientID = User.ClientID;
+    }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        Request.OrderDate = DateTime.Now;
+        var function = new ContractFunctions();
+        function.newRequest(Request, User.PrivateKey);
+        Thread.Sleep(1000);
+        return OnClose.InvokeAsync(true);
+    }
+
+}

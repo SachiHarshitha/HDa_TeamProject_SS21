@@ -1,0 +1,131 @@
+﻿@page "/sensor"
+@using RestSharp;
+@using System.Threading;
+@using System.Net;
+@inject User user;
+
+<h1>Welcome to INTRANAV Data Access Platform</h1>
+
+<p style="white-space: pre-line"></p>
+<div> This page is a simple UI representation to represent the communication between the INTRANAV RTLS Rest API.</div>
+<hr />
+<div>
+    @if (isBusy)
+    {
+    <label>Processing... </label>
+    <progress class="progress-bar-animated" style="width:200px"></progress>
+    }
+</div>
+<hr />
+<h3>Available Quota</h3>
+<div>
+    <input type="text" id="quotaValue" @bind="@quota" readonly width="10px">
+</div>
+<p style="white-space: pre-line"></p>
+<div>
+    <div>
+        <hr />
+        <h3>Manage Assets</h3>
+        <div>
+            <h4>Register Asset</h4>
+            <div>
+                <label>Asset ID :</label>
+                <input id="deviceID" type="text" @bind-value="deviceID" placeholder="Valid asset identification" />
+            </div>
+            <div>
+                <label>Serial Number :</label>
+                <input id="deviceSerial" type="text" @bind-value="deviceSerial" placeholder="Valid Serial Number" />
+            </div>
+            @if (quota > 0)
+            {
+            <button class="btn btn-primary" @onclick="add_Sensor">Register</button>
+            }
+            else
+            {
+            <label>Insufficient Quota!. Please purchase!</label>
+            }
+        </div>
+        <p style="white-space: pre-line"></p>
+        <div>
+            <h4>Delete Asset</h4>
+            <div>
+                <label>Asset ID :</label>
+                <input id="deviceID" type="text" @bind-value="deviceID" placeholder="Valid asset identification" />
+            </div>
+            <button class="btn btn-primary" @onclick="del_Sensor">Delete</button>
+        </div>
+        <p style="white-space: pre-line"></p>
+        <div>
+            <textarea id="RequestArea" rows="2" cols="20" @bind="@input" style="width: 100%; max-width: 100%; height:auto" readonly></textarea>
+        </div>
+    </div>
+    <hr />
+    <div>
+        <h3>REST API Response</h3>
+        <div>
+            <label>Rest API Address :</label>
+            <input id="homepath" type="text" @bind-value="home" width="100px" placeholder="Please enter the Rest API Address" />
+        </div>
+        <textarea id="ResponseArea" rows="2" cols="20" @bind="@output" style="width: 100%; max-width: 100%; height:auto" readonly></textarea>
+    </div>
+</div>
+
+@code {
+    private static string home;
+    private string deviceID;
+    private string deviceSerial;
+    private string output;
+    private string input;
+    private uint quota { get; set; }
+    public bool isBusy { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        Refresh();
+        base.OnInitialized();
+    }
+
+    private void Refresh()
+    {
+        quota = new ContractFunctions().getAssetBalance(user.PrivateKey);
+        CallAPI();
+        base.StateHasChanged();
+    }
+
+    private async Task add_Sensor()
+    {
+        isBusy = true;
+        await new ContractFunctions().add_Sensor(user, deviceID, deviceSerial);
+        Refresh();
+        StateHasChanged();
+        Uri uri = new Uri(home + @"**{Authentication Code}/" + user.ClientID + @"/" + deviceID );
+        input = "Request Uri : " + uri + "\n" + "Request Type : GET\n";
+        isBusy = false;
+    }
+
+    private async Task del_Sensor()
+    {
+        isBusy = true;
+        await new ContractFunctions().del_Sensor(user, deviceID);
+        Refresh();
+        StateHasChanged();
+        Uri uri = new Uri(home + @"**{Authentication Code}/" + user.ClientID + @"/" + deviceID + @"/" + deviceSerial);
+        input = "Request Uri : " + uri + "\n" + "Request Type : GET\n";
+        isBusy = false;
+    }
+
+    private async void CallAPI()
+    {
+        if (String.IsNullOrWhiteSpace(home))
+            home = @"https://c82793d07bac.ngrok.io/asset/getbyID/";
+        Uri url = new Uri(home + WebUtility.UrlEncode(user.Authcode) + @"/" + user.ClientID);
+        var client = new RestClient(url);
+        client.Timeout = -1;
+        var request = new RestRequest(Method.GET);
+        IRestResponse response = client.Execute(request);
+        output = response.Content;
+
+    }
+
+
+}

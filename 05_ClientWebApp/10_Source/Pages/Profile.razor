@@ -1,0 +1,183 @@
+﻿@page "/profile"
+@using INTRANAV_Client_Application.Data
+@using Microsoft.AspNetCore.Components
+@using System.Threading; 
+
+@inject User user;
+
+<h1>My Profile</h1>
+<hr />
+<td><h3>My Information</h3></td>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>First Name</td>
+                <td>@user.FirstName</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>@user.LastName</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@user.Email</td>
+            </tr>
+            <tr>
+                <td>Client ID</td>
+                <td>@user.ClientID</td>
+            </tr>
+            <tr>
+                <td>Private Key</td>
+                <td><CopyToCliboardText Text="@user.PrivateKey"></CopyToCliboardText></td>
+            </tr>
+            <tr>
+                <td>Account Balance</td>
+                <td>@balance Ether</td>
+            </tr>
+            <tr>
+                <td>Available Sensor Quota</td>
+                <td>@sensBalance</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr />
+<td><h3>My Last Order</h3></td>
+<button class="btn btn-primary" @onclick="refresh">
+    <span class="oi oi-reload" aria-hidden="true"></span>
+</button>
+<button class="btn btn-primary" @onclick="OpenNewRequestDialog">New Request</button>
+@if (reqPayment != "0")
+{
+    <button class="btn btn-primary" @onclick="transfer">Transfer Token</button>
+}
+
+@if (isBusy)
+{
+    <progress class="progress-bar-animated" ></progress>
+}
+
+<p style="white-space: pre-line"></p>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>My Address</td>
+                <td>@myRequest.ReqAddress</td>
+            </tr>
+            <tr>
+                <td>Released By</td>
+                <td>@myRequest.RelAddress</td>
+            </tr>
+            <tr>
+                <td>Pending Payments</td>
+                <td>@reqPayment</td>
+            </tr>
+            <tr>
+                <td>Order Date</td>
+                <td>@myRequest.OrderDate</td>
+            </tr>
+            <tr>
+                <td>Order Quantity</td>
+                <td>@myRequest.Quantity</td>
+            </tr>
+            <tr>
+                <td>Level</td>
+                <td>@myRequest.Level</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>@myRequest.get_StatusText()</td>
+            </tr>
+            <tr>
+                <td>Authorization Code</td>
+                <td><CopyToCliboardText Text="@myRequest.AuthCode"></CopyToCliboardText></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@if (NewRequestOpen)
+{
+    <NewRequest OnClose="@OnNewReqDialogClose">
+    </NewRequest>
+}
+
+
+@code {
+
+    private string balance = "0";
+    private uint sensBalance = 0;
+    private string reqPayment = "0";
+    private Request myRequest = new Request();
+    private NewRequest modal { get; set; }
+    public bool NewRequestOpen { get; set; }
+    public bool isBusy { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        user.FirstName = "Sachith Harshitha";
+        user.LastName = "Liyanagama";
+        user.Email = "sachi.harshitha@live.com";
+        user.ClientID = "CL12345SF1";
+        user.PrivateKey = @"0xbf562bcbb6792187dc5cdcf645ff07595d68ce9f234f173785ca1eae097c61e1";
+        refresh();
+    }
+
+    private void refresh()
+    {
+        isBusy = true;
+        Thread.Sleep(500);
+        sensBalance = new ContractFunctions().getAssetBalance(user.PrivateKey);
+        balance = new ContractFunctions().getBalance(user.PrivateKey);
+        myRequest = new ContractFunctions().getRequest(user.PrivateKey);
+        reqPayment = new ContractFunctions().getReqToken(user.PrivateKey).ToString();
+        user.Authcode = myRequest.AuthCode;
+        isBusy = false;
+    }
+
+    private void request()
+    {
+        Request request = new Request(user.FullName, user.Email, user.ClientID, DateTime.Now, 10, 1);
+        new ContractFunctions().newRequest(request, user.PrivateKey);
+        refresh();
+    }
+
+    private async Task transfer()
+    {
+        isBusy = true;
+        await new ContractFunctions().transferToken(user.PrivateKey);
+        refresh();
+        this.StateHasChanged();
+        isBusy = false;
+    }
+
+    private void OpenNewRequestDialog()
+    {
+        NewRequestOpen = true;
+        StateHasChanged();
+    }
+
+    private void OnNewReqDialogClose(bool accepted)
+    {
+        if (accepted)
+        {
+            refresh();
+        }
+        NewRequestOpen = false;
+    }
+}

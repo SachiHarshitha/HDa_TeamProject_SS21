@@ -1,0 +1,51 @@
+﻿@page "/"
+
+<h1>Welcome to INTRANAV Client Application!</h1>
+<p style="white-space: pre-line"></p>
+<div>Welcome to our Simulation app for "Blockchain based Access Management Project". </div>
+<p style="white-space: pre-line"></p>
+<div>
+    <picture>
+        <img src="/Image/Concept.png" asp-append-version="true" width="1000px" />
+    </picture>
+</div>
+<p style="white-space: pre-line"></p>
+<div>By using this simple web application you are able to invoke the commands and process data with the Ethereum Blockchain.</div>
+<p style="white-space: pre-line"></p>
+<span class="text-nowrap">
+    The backend communication is using
+    <a target="_blank" class="font-weight-bold" href="https://nethereum.com/">Nethereum</a>
+</span>
+    An open source .NET integration library for Ethereum.
+<div>
+
+</div>
+<hr />
+<div>
+    <h4>
+        In order to proceed with the simulation, it is required to set the Smart Contract addresses from your deployment.
+    </h4>
+    <div>
+        <label>Main Contract Address :</label>
+        <input id="deviceID" type="text" @bind-value="mainContract" placeholder="Main Smart Contract Instance Address" />
+    </div>
+    <div>
+        <label>Asset Contract Address :</label>
+        <input id="deviceSerial" type="text" @bind-value="assetContract" placeholder="Assets Smart Contract Instance Address" />
+    </div>
+    <p style="white-space: pre-line"></p>
+    <button class="btn btn-primary" @onclick="set">Initialize</button>
+</div>
+@code{
+    private static string mainContract;
+    private static string assetContract;
+
+    private void set()
+    {
+        if (String.IsNullOrWhiteSpace(mainContract))
+            mainContract = @"0xd2DF0bc9B2e9eb28c260daDf7D2ACC6db23fD024";
+        if (String.IsNullOrWhiteSpace(assetContract))
+            assetContract = @"0xbA89f50904FeB82245C9c238dDb8A88420b87489";
+        new ContractFunctions().Init(mainContract, assetContract);
+    }
+}

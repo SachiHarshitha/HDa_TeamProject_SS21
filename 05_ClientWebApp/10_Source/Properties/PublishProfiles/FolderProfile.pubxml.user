@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\sachi\source\repos\01_DotNet\10_Web\INTRANAV Client Application\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
+    <History>True|2021-07-07T19:44:15.0118884Z;True|2021-07-07T21:24:27.0101217+02:00;True|2021-07-07T19:28:11.7296108+02:00;True|2021-07-07T16:05:29.5028173+02:00;True|2021-07-07T15:51:51.0137042+02:00;True|2021-07-07T14:56:05.8210294+02:00;True|2021-06-22T00:02:46.0341172+02:00;</History>
+  </PropertyGroup>
+</Project>
