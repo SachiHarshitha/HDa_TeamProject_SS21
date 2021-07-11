@@ -96,7 +96,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"OpenRequests.sol": "OpenRequests"
+			"02_SmartContract/OpenRequests.sol": "OpenRequests"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -107,7 +107,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"OpenRequests.sol": {
+		"02_SmartContract/OpenRequests.sol": {
 			"keccak256": "0x6b58ea1828a417bc9a1852ce137235cfd88e6a282082d5db24f7b1cfcb87229c",
 			"urls": [
 				"bzz-raw://29c0ee4a361da4ac48ce06e14089fe66bb896d3d182c3b4f974f40a5df7ec2e3",

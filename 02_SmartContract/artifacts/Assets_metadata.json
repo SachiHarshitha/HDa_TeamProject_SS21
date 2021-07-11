@@ -184,7 +184,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Assets.sol": "Assets"
+			"02_SmartContract/Assets.sol": "Assets"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -195,21 +195,21 @@
 		"remappings": []
 	},
 	"sources": {
-		"Assets.sol": {
+		"02_SmartContract/Assets.sol": {
 			"keccak256": "0x16dab25ee148c868c2bea84a8be2c4598d07513d78dd867250893224d9e6ca5b",
 			"urls": [
 				"bzz-raw://193f23f160e9db6799f086cab25209888fae2bd922a470b7caf2219dc7379970",
 				"dweb:/ipfs/QmTuiQF6sjgKE1jnExMVBV4MU8h6cD22ioiNRYaw2rgg26"
 			]
 		},
-		"OraService.sol": {
-			"keccak256": "0x1b733a76f04780dd17459fb12842681f7d275dcc4bf394499a701ae205fcb653",
+		"02_SmartContract/OraService.sol": {
+			"keccak256": "0xbc58b077bc931278eaed97b4c0c886b7dcb1c710899405afb11459617b4fb1c5",
 			"urls": [
-				"bzz-raw://efc06cec6a9d860ee2c9fda700750ef0b965c11d8bed845d4c19d6eb33122692",
-				"dweb:/ipfs/QmWXRUwgEyERE6YGjuGv1QbNq1dQqxe7iBGkivPR3KXxDF"
+				"bzz-raw://f4fac33add22e55ac9b92837d92ec9fb7fb8906a93e89b3da18ad0e4f038da1f",
+				"dweb:/ipfs/QmR1Gvk6GV46LsCDmJRbNGrvHfZTtR2RP4h9oDpGB7wBo3"
 			]
 		},
-		"provableAPI_0.5.sol": {
+		"02_SmartContract/provableAPI_0.5.sol": {
 			"keccak256": "0x194e0f6f1b2cf2eca7204430e81ebd6cc6ca449350b04ffcc9bb17c24a8094fc",
 			"urls": [
 				"bzz-raw://afbe8ed8f8729fc3622144a244e9f64e0fb91084828ab68e9508aa0babe44e6e",

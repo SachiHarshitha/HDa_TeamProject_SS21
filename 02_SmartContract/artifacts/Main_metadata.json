@@ -351,7 +351,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Main.sol": "Main"
+			"02_SmartContract/Main.sol": "Main"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -362,42 +362,42 @@
 		"remappings": []
 	},
 	"sources": {
-		"Assets.sol": {
+		"02_SmartContract/Assets.sol": {
 			"keccak256": "0x16dab25ee148c868c2bea84a8be2c4598d07513d78dd867250893224d9e6ca5b",
 			"urls": [
 				"bzz-raw://193f23f160e9db6799f086cab25209888fae2bd922a470b7caf2219dc7379970",
 				"dweb:/ipfs/QmTuiQF6sjgKE1jnExMVBV4MU8h6cD22ioiNRYaw2rgg26"
 			]
 		},
-		"History.sol": {
+		"02_SmartContract/History.sol": {
 			"keccak256": "0x31c77517c091138cb05022746d2092c895a2faa4340071d64d7c6af7e39fb6de",
 			"urls": [
 				"bzz-raw://62a71ac5567bc7a27e5315974aaef3ddc15463c17d4c74b615484f2a69b64676",
 				"dweb:/ipfs/QmZYjk8sECCy3A7ptAsR6cvMsLmnkQU5M3ipxjQsmpzP9D"
 			]
 		},
-		"Main.sol": {
+		"02_SmartContract/Main.sol": {
 			"keccak256": "0xeefc6a5bcec5c39f7f20be21e5b92be607ddfdc9bff8765f67f83c75ff3ed8cb",
 			"urls": [
 				"bzz-raw://154990717ec7dccbdf629e5ebf3641a82b2201557fe4b26d3a146caf6c913747",
 				"dweb:/ipfs/QmbbpRZrDgspRf75WyKpfndwu9hW72tMAstMMJFMLWeTvC"
 			]
 		},
-		"OpenRequests.sol": {
+		"02_SmartContract/OpenRequests.sol": {
 			"keccak256": "0x6b58ea1828a417bc9a1852ce137235cfd88e6a282082d5db24f7b1cfcb87229c",
 			"urls": [
 				"bzz-raw://29c0ee4a361da4ac48ce06e14089fe66bb896d3d182c3b4f974f40a5df7ec2e3",
 				"dweb:/ipfs/QmTCV27Yfgn6NWYBQouPVg81PgdyF6ocM1VbnawH9qTqRZ"
 			]
 		},
-		"OraService.sol": {
-			"keccak256": "0x1b733a76f04780dd17459fb12842681f7d275dcc4bf394499a701ae205fcb653",
+		"02_SmartContract/OraService.sol": {
+			"keccak256": "0xbc58b077bc931278eaed97b4c0c886b7dcb1c710899405afb11459617b4fb1c5",
 			"urls": [
-				"bzz-raw://efc06cec6a9d860ee2c9fda700750ef0b965c11d8bed845d4c19d6eb33122692",
-				"dweb:/ipfs/QmWXRUwgEyERE6YGjuGv1QbNq1dQqxe7iBGkivPR3KXxDF"
+				"bzz-raw://f4fac33add22e55ac9b92837d92ec9fb7fb8906a93e89b3da18ad0e4f038da1f",
+				"dweb:/ipfs/QmR1Gvk6GV46LsCDmJRbNGrvHfZTtR2RP4h9oDpGB7wBo3"
 			]
 		},
-		"provableAPI_0.5.sol": {
+		"02_SmartContract/provableAPI_0.5.sol": {
 			"keccak256": "0x194e0f6f1b2cf2eca7204430e81ebd6cc6ca449350b04ffcc9bb17c24a8094fc",
 			"urls": [
 				"bzz-raw://afbe8ed8f8729fc3622144a244e9f64e0fb91084828ab68e9508aa0babe44e6e",

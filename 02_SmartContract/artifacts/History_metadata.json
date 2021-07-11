@@ -80,7 +80,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"History.sol": "History"
+			"02_SmartContract/History.sol": "History"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -91,7 +91,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"History.sol": {
+		"02_SmartContract/History.sol": {
 			"keccak256": "0x31c77517c091138cb05022746d2092c895a2faa4340071d64d7c6af7e39fb6de",
 			"urls": [
 				"bzz-raw://62a71ac5567bc7a27e5315974aaef3ddc15463c17d4c74b615484f2a69b64676",

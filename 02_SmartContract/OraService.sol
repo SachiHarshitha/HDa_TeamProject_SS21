@@ -27,7 +27,7 @@ contract OraService is usingProvable {
             );
         } else {
             string memory path = append2(
-                "https://c82793d07bac.ngrok.io/user/new/aXrWDpmJbrMRqyg2XpHmfOMV5vYVbCirflSw0ZICQS8%3D/",
+                "http://ec2co-ecsel-tubj03wqh1gc-869839621.eu-west-2.elb.amazonaws.com:9080/user/new/aXrWDpmJbrMRqyg2XpHmfOMV5vYVbCirflSw0ZICQS8%3D/",
                 customerID
             );
             provable_query("URL", path);
@@ -42,7 +42,7 @@ contract OraService is usingProvable {
             );
         } else {
             string memory path = append2(
-                "https://c82793d07bac.ngrok.io/user/delete/aXrWDpmJbrMRqyg2XpHmfOMV5vYVbCirflSw0ZICQS8%3D/",
+                "http://ec2co-ecsel-tubj03wqh1gc-869839621.eu-west-2.elb.amazonaws.com:9080/user/delete/aXrWDpmJbrMRqyg2XpHmfOMV5vYVbCirflSw0ZICQS8%3D/",
                 customerID
             );
             provable_query("URL", path);
@@ -62,7 +62,7 @@ contract OraService is usingProvable {
             );
         } else {
             string memory path = append5(
-                "https://c82793d07bac.ngrok.io/asset/register",
+                "http://ec2co-ecsel-tubj03wqh1gc-869839621.eu-west-2.elb.amazonaws.com:9080/asset/register",
                 _authcode,
                 _clientID,
                 _assetID,
@@ -84,7 +84,7 @@ contract OraService is usingProvable {
             );
         } else {
             string memory path = append4(
-                "https://c82793d07bac.ngrok.io/asset/delete",
+                "http://ec2co-ecsel-tubj03wqh1gc-869839621.eu-west-2.elb.amazonaws.com:9080/asset/delete",
                 _authcode,
                 _clientID,
                 _assetID
