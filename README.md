@@ -2,9 +2,12 @@
 As a part of the 2nd semester of my Master's Degree program in Electrical Engineering and Information Technology, we are required to carry out a team project. The requirements was to implement a use case to integrate an existing company order management system into a blockchain based order management system. The concept is as shown below.
 ![image](https://user-images.githubusercontent.com/76457616/126892804-4ff77a3f-f10b-4dec-b6bb-681d69c3c381.png)
 
+# Application Flow Chart
+![FlowChart](https://user-images.githubusercontent.com/76457616/126892922-6161609d-e008-4d50-a8cd-feeb6d32efb0.png)
 
 # Smart Contracting Structure
 ![image](https://user-images.githubusercontent.com/76457616/126892865-d0a5148c-1c6f-45d4-9614-c2ff740c1460.png)
+
 
 # Internal Processing Rest API
 ![image](https://user-images.githubusercontent.com/76457616/126892638-ec0551e2-6e36-4a5f-9472-07224d4ea76a.png)
