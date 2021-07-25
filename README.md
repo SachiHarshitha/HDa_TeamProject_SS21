@@ -10,10 +10,12 @@ As a part of the 2nd semester of my Master's Degree program in Electrical Engine
 
 # Smart Contracting Structure
 ![image](https://user-images.githubusercontent.com/76457616/126892865-d0a5148c-1c6f-45d4-9614-c2ff740c1460.png)
-
+- UML Diagram 🔀 : https://github.com/SachiHarshitha/HDa_TeamProject_SS21/blob/master/00_Documentation/02_SmartContract_UML.svg
+- Source 📑 : https://github.com/SachiHarshitha/HDa_TeamProject_SS21/tree/master/02_SmartContract
 
 # Internal Processing Rest API
 ![image](https://user-images.githubusercontent.com/76457616/126892638-ec0551e2-6e36-4a5f-9472-07224d4ea76a.png)
+- Source 📑 : https://github.com/SachiHarshitha/HDa_TeamProject_SS21/tree/master/04_InternalRestAPI
 
 # Client Application Interface
 Home Page
@@ -27,9 +29,11 @@ User Access Management Page
 Asset Management Page
 
 ![image](https://user-images.githubusercontent.com/76457616/126892671-2b0527af-dd60-4c3b-a6f8-4314fe1cbbc5.png)
+- Source 📑 : https://github.com/SachiHarshitha/HDa_TeamProject_SS21/tree/master/05_ClientWebApp/10_Source
 
-# Dummy Internal Order Management API
+# Dummy Internal Order and Client Management API
 ![image](https://user-images.githubusercontent.com/76457616/126892778-ef0341b6-27e0-405d-b053-255932ad1d94.png)
+- Source 📑 : https://github.com/SachiHarshitha/HDa_TeamProject_SS21/tree/master/03_CompanyRestAPI
 
 Please refer to the documentation on how to run this project on your system.
 https://github.com/SachiHarshitha/HDa_TeamProject_SS21/tree/master/00_Documentation
