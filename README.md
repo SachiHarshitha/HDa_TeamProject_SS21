@@ -26,4 +26,4 @@ Asset Management Page
 ![image](https://user-images.githubusercontent.com/76457616/126892778-ef0341b6-27e0-405d-b053-255932ad1d94.png)
 
 Please refer to the documentation on how to run this project on your system.
-
+https://github.com/SachiHarshitha/HDa_TeamProject_SS21/tree/master/00_Documentation
